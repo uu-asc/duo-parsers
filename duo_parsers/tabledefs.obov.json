@@ -1,0 +1,63 @@
+{
+    "eigenschappen": {
+        "encoding": "latin1",
+        "separator": "|",
+        "date_format": "%Y%m%d"
+    },
+    "recordsoorten": {
+        "VLP": "Voorlooprecord",
+        "PER": "Wijziging in persoonsgegevens",
+        "NAT": "Wijziging in de nationaliteit",
+        "VBT": "Wijziging in de verblijfstitel",
+        "VBV": "Wijziging in de verblijfvergunning",
+        "ISG": "Wijziging in inschrijvings-(deelname-)gegevens",
+        "GRD": "Wijziging in graad-(resultaat-)gegevens",
+        "SLR": "Sluitrecord"
+    },
+    "velden_per_recordsoort": {
+        "vlp": {
+            "recordsoort": {
+                "verschil": "nee"
+            },
+            "brin": {
+                "verschil": "nee"
+            },
+            "bekostigingsjaar": {
+                "verschil": "nee"
+            },
+            "datum_aanvraag_bijbehorend_obo": {
+                "alternatieve_naam": "datum_aanvraag_obo",
+                "formaat": "date",
+                "verschil": "nee"
+            },
+            "datum_aanvraag_vorig_obo": {
+                "alternatieve_naam": "datum_aanvraag_vorig_obo",
+                "formaat": "date",
+                "verschil": "nee"
+            }
+        },
+        "slr": {
+            "recordsoort": {
+                "verschil": "nee"
+            },
+            "totaal_aantal_per_records": {
+                "verschil": "nee"
+            },
+            "totaal_aantal_nat_records": {
+                "verschil": "nee"
+            },
+            "totaal_aantal_vbt_records": {
+                "verschil": "nee"
+            },
+            "totaal_aantal_vbv_records": {
+                "verschil": "nee"
+            },
+            "totaal_aantal_isg_records": {
+                "verschil": "nee"
+            },
+            "totaal_aantal_grd_recorsd": {
+                "verschil": "nee"
+            }
+        }
+    }
+}

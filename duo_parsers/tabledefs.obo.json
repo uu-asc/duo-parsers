@@ -1,0 +1,297 @@
+{
+    "eigenschappen": {
+        "encoding": "latin1",
+        "separator": "|",
+        "date_format": "%Y%m%d"
+    },
+    "recordsoorten": {
+        "VLP": "Voorlooprecord",
+        "PER": "Persoon",
+        "NAT": "Nationaliteit",
+        "VBT": "Verblijfstitel",
+        "VBV": "Verblijfsvergunning",
+        "ISG": "Inschrijving",
+        "GRD": "Graad",
+        "CTR": "Controletotalen"
+    },
+    "velden_per_recordsoort": {
+        "vlp": {
+            "recordsoort": {
+                "verschil": "nee"
+            },
+            "brin": {
+                "verschil": "nee"
+            },
+            "bekostigingsjaar": {
+                "verschil": "nee"
+            },
+            "datum_aanvraag": {
+                "formaat": "date",
+                "verschil": "nee"
+            }
+        },
+        "per": {
+            "recordsoort": {
+                "verschil": "nee"
+            },
+            "burgerservicenummer": {
+                "alternatieve_naam": "bsn",
+                "verschil": "nee"
+            },
+            "onderwijsnummer": {
+                "alternatieve_naam": "own",
+                "verschil": "nee"
+            },
+            "indicatie_gba-relatie": {
+                "alternatatieve_naam": "gba_relatie",
+                "formaat": "category",
+                "mogelijke_waarden": ["J", "N"],
+                "verschil": "ja"
+            },
+            "indicatie_wsf_verbruik": {
+                "alternatatieve_naam": "wsf_verbruik",
+                "formaat": "category",
+                "mogelijke_waarden": ["J", "N"],
+                "verschil": "ja"
+            }
+        },
+        "nat": {
+            "recordsoort": {
+                "verschil": "nee"
+            },
+            "burgerservicenummer": {
+                "alternatieve_naam": "bsn",
+                "verschil": "nee"
+            },
+            "onderwijsnummer": {
+                "alternatieve_naam": "own",
+                "verschil": "nee"
+            },
+            "begindatum": {
+                "formaat": "date",
+                "verschil": "ja"
+            },
+            "einddatum": {
+                "formaat": "date",
+                "verschil": "ja"
+            },
+            "nationaliteitscode": {
+                "alternatieve_naam": "code_nationaliteit",
+                "verschil": "nee"
+            },
+            "omschrijving_nationaliteit": {
+                "alternatieve_naam": "oms_nationaliteit",
+                "verschil": "nee"
+            }
+        },
+        "vbt": {
+            "recordsoort": {
+                "verschil": "nee"
+            },
+            "burgerservicenummer": {
+                "alternatieve_naam": "bsn",
+                "verschil": "nee"
+            },
+            "onderwijsnummer": {
+                "alternatieve_naam": "own",
+                "verschil": "nee"
+            },
+            "begindatum": {
+                "formaat": "date",
+                "verschil": "ja"
+            },
+            "einddatum": {
+                "formaat": "date",
+                "verschil": "ja"
+            },
+            "verblijfstitelcode": {
+                "alternatieve_naam": "code_verblijfstitel",
+                "verschil": "nee"
+            },
+            "omschrijving_verblijfstitel": {
+                "alternatieve_naam": "oms_verblijfstitel",
+                "verschil": "nee"
+            }
+        },
+        "vbv": {
+            "recordsoort": {
+                "verschil": "nee"
+            },
+            "burgerservicenummer": {
+                "alternatieve_naam": "bsn",
+                "verschil": "nee"
+            },
+            "onderwijsnummer": {
+                "alternatieve_naam": "own",
+                "verschil": "nee"
+            },
+            "begindatum": {
+                "formaat": "date",
+                "verschil": "ja"
+            },
+            "einddatum": {
+                "formaat": "date",
+                "verschil": "ja"
+            },
+            "type_verblijfsvergunning": {
+                "alternatieve_naam": "type_vvr",
+                "verschil": "nee"
+            },
+            "omschrijving_verblijfsvergunning": {
+                "alternatieve_naam": "oms_vvr",
+                "verschil": "nee"
+            },
+            "voldoet_aan_beperking_wsf2000": {
+                "alternatieve_naam": "voldoet_wsf",
+                "formaat": "category",
+                "mogelijke_waarden": ["J", "N"],
+                "verschil": "ja"
+            }
+        },
+        "isg": {
+            "recordsoort": {
+                "verschil": "nee"
+            },
+            "burgerservicenummer": {
+                "alternatieve_naam": "bsn",
+                "verschil": "nee"
+            },
+            "onderwijsnummer": {
+                "alternatieve_naam": "own",
+                "verschil": "nee"
+            },
+            "inschrijvingvolgnummer": {
+                "alternatieve_naam": "volgnummer",
+                "verschil": "nee"
+            },
+            "inschrijvingsvorm": {
+                "alternatieve_naam": "inschrijfvorm",
+                "formaat": "category",
+                "mogelijke_waarden": {
+                    "E": "Extraneus",
+                    "S": "Student"
+                },
+                "verschil": "ja"
+            },
+            "datum_inschrijving": {
+                "alternatieve_naam": "begindatum",
+                "formaat": "date",
+                "verschil": "ja"
+            },
+            "datum_uitschrijving": {
+                "alternatieve_naam": "einddatum",
+                "formaat": "date",
+                "verschil": "ja"
+            },
+            "eerste_inschrijving": {
+                "formaat": "category",
+                "mogelijke_waarden": ["J", "N"],
+                "verschil": "ja"
+            },
+            "datum_eerste_aanlevering": {
+                "verschil": "ja"
+            },
+            "onderwijsvorm": {
+                "formaat": "category",
+                "mogelijke_waarden": {
+                    "VT": "Voltijd",
+                    "DT": "Deeltijd",
+                    "DU": "Duaal"
+                },
+                "verschil": "ja"
+            },
+            "opleidingscode": {
+                "alternatieve_naam": "croho",
+                "verschil": "ja"
+            },
+            "opleidingsfase": {
+                "alternatieve_naam": "fase",
+                "formaat": "category",
+                "mogelijke_waarden": {
+                    "A": "Associate Degree",
+                    "B": "Bachelor",
+                    "D": "Propedeuse bachelor",
+                    "I": "Initiele opleiding ",
+                    "M": "Master ",
+                    "P": "Propedeuse ",
+                    "S": "Schakelprogramma"
+                },
+                "verschil": "ja"
+            }
+        },
+        "grd": {
+            "recordsoort": {
+                "verschil": "nee"
+            },
+            "burgerservicenummer": {
+                "alternatieve_naam": "bsn",
+                "verschil": "nee"
+            },
+            "onderwijsnummer": {
+                "alternatieve_naam": "own",
+                "verschil": "nee"
+            },
+            "resultaatvolgnummer": {
+                "alternatieve_naam": "volgnummer",
+                "verschil": "nee"
+            },
+            "eerste_graad": {
+                "formaat": "category",
+                "mogelijke_waarden": ["J", "N"],
+                "verschil": "ja"
+            },
+            "datum_diploma": {
+                "formaat": "date",
+                "verschil": "ja"
+            },
+            "datum_eerste_aanlevering": {
+                "formaat": "date",
+                "verschil": "ja"
+            },
+            "onderwijsvorm": {
+                "formaat": "category",
+                "mogelijke_waarden": {
+                    "VT": "Voltijd",
+                    "DT": "Deeltijd",
+                    "DU": "Duaal"
+                },
+                "verschil": "ja"
+            },
+            "opleidingscode": {
+                "alternatieve_naam": "croho",
+                "verschil": "ja"
+            },
+            "opleidingsfase": {
+                "alternatieve_naam": "fase",
+                "formaat": "category",
+                "mogelijke_waarden": {
+                    "A": "Associate Degree",
+                    "B": "Bachelor",
+                    "D": "Propedeuse bachelor",
+                    "I": "Initiele opleiding",
+                    "M": "Master",
+                    "P": "Propedeuse",
+                    "T": "Tussentijds doctoraal examen"
+                },
+                "verschil": "ja"
+            }
+        },
+        "ctr": {
+            "recordsoort": {
+                "verschil": "nee"
+            },
+            "totaal_opleidingscode": {
+                "verschil": "nee"
+            },
+            "totaal_aantal_inschrijvingen": {
+                "verschil": "nee"
+            },
+            "totaal_aantal_graden": {
+                "verschil": "nee"
+            },
+            "totaal_generaal": {
+                "verschil": "nee"
+            }
+        }
+    }
+}

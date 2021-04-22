@@ -1,0 +1,10 @@
+name: accountants
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=>3.8
+  - jupyterlab
+  - pandas=>1.0.0
+  - xlrd
+  - openpyxl
