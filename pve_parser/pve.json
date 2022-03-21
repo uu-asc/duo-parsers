@@ -1,0 +1,91 @@
+{
+    "meta": {
+        "versie": "21.4",
+        "url": "https://duo.nl/zakelijk/images/programma-van-eisen-hoger-onderwijs.pdf",
+        "datum": "2021-10-04"
+    },
+    "bestandsbeschrijvingen": {
+        "OBO": {
+            "naam": "Overzicht Basis- en diplomagegevens Onderzoek",
+            "paginas": "175-182",
+            "encoding": "latin1",
+            "separator": "|",
+            "datum_formaat": "%Y%m%d",
+            "tabelnamen": {
+                "VLP": "Voorlooprecord",
+                "PER": "Persoongegevens",
+                "NAT": "Nationaliteitsgegevens",
+                "VBT": "Verblijfstitelgegevens",
+                "VBV": "Verblijfsvergunninggegevens",
+                "ISG": "Inschrijvings-(deelname-)gegevens",
+                "GRD": "Graad-(resultaat-)gegevens",
+                "CTR": "Controletotalen"
+            }
+        },
+        "OBOV": {
+            "naam": "Verschillenlijst Overzicht Basis- en diplomagegevens Onderzoek",
+            "paginas": "185-193",
+            "encoding": "latin1",
+            "separator": "|",
+            "datum_formaat": "%Y%m%d",
+            "tabelnamen": {
+                "VLP": "Voorlooprecord",
+                "PER": "Wijziging in persoonsgegevens",
+                "NAT": "Wijziging in de nationaliteit",
+                "VBT": "Wijziging in de verblijfstitel",
+                "VBV": "Wijziging in de verblijfvergunning",
+                "ISG": "Wijziging in inschrijvings-(deelname-)gegevens",
+                "GRD": "Wijziging in graad-(resultaat-)gegevens",
+                "SLR": "Sluitrecord"
+            }
+        },
+        "ANBS": {
+            "naam": "Overzicht Basis- en diplomagegevens Onderzoek",
+            "paginas": "196-203",
+            "encoding": "utf8",
+            "separator": "|",
+            "date_format": "%Y%m%d",
+            "tabelnamen": {
+                "VLP": "Voorlooprecord",
+                "BLB_OUD": "Bekostigingsloopbaan student",
+                "BLB": "Bekostigingsloopbaan student",
+                "BRD": "Bekostigingsresultaat deelname",
+                "BRR": "Bekostigingsresultaatresultaat",
+                "SLR": "Sluitrecord"
+            }
+        }
+    },
+    "regex": {
+        "omschrijving": {
+            "target": "alternatieve_naam",
+            "patterns": {
+                "burgerservicenummer": "bsn",
+                "onderwijsnummer": "own",
+                "opleidingscode": "croho",
+                "voldoet_aan_beperking_wsf2000": "voldoet_aan_wsf",
+                "omschrijving": "oms",
+                "verblijfsvergunning": "vvr",
+                ".*volgnummer": "volgnummer"
+            }
+        },
+        "formaat_lengte": {
+            "target": "dtype",
+            "patterns": {
+                ".*(jjjjmmdd).*": "datum",
+                "^A.*": "string",
+                "^N.*": "int",
+                "^B.*": "boolean"
+            }
+        },
+        "definitie_toelichting": {
+            "target": "definitie_toelichting",
+            "patterns": {
+                " ogelijke": " Mogelijke",
+                " anvullende": " Aanvullende",
+                " oelichting": " Toelichting",
+                " aarde": " Waarde",
+                "^[A-Z]([A-Z]\\w*)": "\\g<1>"
+            }
+        }
+    }
+}

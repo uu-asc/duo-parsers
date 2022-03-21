@@ -1,0 +1,448 @@
+{
+    "meta": {
+        "versie": "21.4",
+        "url": "https://duo.nl/zakelijk/images/programma-van-eisen-hoger-onderwijs.pdf",
+        "datum": "2021-10-04"
+    },
+    "eigenschappen": {
+        "naam": "Overzicht Basis- en diplomagegevens Onderzoek",
+        "paginas": "175-182",
+        "encoding": "latin1",
+        "separator": "|",
+        "datum_formaat": "%Y%m%d"
+    },
+    "recordsoorten": {
+        "vlp": "Voorlooprecord",
+        "per": "Persoongegevens",
+        "nat": "Nationaliteitsgegevens",
+        "vbt": "Verblijfstitelgegevens",
+        "vbv": "Verblijfsvergunninggegevens",
+        "isg": "Inschrijvings-(deelname-)gegevens",
+        "grd": "Graad-(resultaat-)gegevens",
+        "ctr": "Controletotalen"
+    },
+    "velden": {
+        "vlp": {
+            "Recordsoort": {
+                "formaat_lengte": "AN3..3",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van het record dat geleverd wordt. Waarde \u201cVLP\u201d.",
+                "alternatieve_naam": "recordsoort",
+                "dtype": "string"
+            },
+            "BRIN": {
+                "formaat_lengte": "AN4..4",
+                "verplicht": true,
+                "definitie_toelichting": "Een unieke code voor een onderwijsinstelling Het BRIN bestaat uit 2 cijfers gevolgd door 2 hoofdletters Aanvullende opmerking: Het BRIN van de instelling waarvoor het Overzicht Basis- en diplomagegevens Onderzoek is aangevraagd.",
+                "alternatieve_naam": "brin",
+                "dtype": "string"
+            },
+            "Bekostigingsjaar": {
+                "formaat_lengte": "N4..4",
+                "verplicht": true,
+                "definitie_toelichting": "Het bekostigingsjaar waarop het OBO betrekking heeft. Toelichting: De bekostiging heeft voor inschrijvingen betrekking op de peildatum 1 oktober van het bekostigingsjaar - 2 en voor graden op de periode van 2 oktober van het bekostigingsjaar - 3 tot en met 1 oktober van het bekostigingsjaar - 2.",
+                "alternatieve_naam": "bekostigingsjaar",
+                "dtype": "int"
+            },
+            "Datum aanvraag": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": true,
+                "definitie_toelichting": "De datum (jjjjmmdd) waarop het Overzicht Basis- en diplomagegevens Onderzoek door de instelling is aangevraagd.",
+                "alternatieve_naam": "datum_aanvraag",
+                "dtype": "datum"
+            }
+        },
+        "per": {
+            "Recordsoort": {
+                "formaat_lengte": "AN3..3",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van het record dat geleverd wordt. Waarde \u201cPER\u201d.",
+                "alternatieve_naam": "recordsoort",
+                "dtype": "string"
+            },
+            "Burgerservicenummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het burgerservicenummer (BSN) is het nummer dat de natuurlijke persoon uniek identificeert in overheidsadministraties. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "burgerservicenummer",
+                "dtype": "string"
+            },
+            "Onderwijsnummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het uniek identificerende nummer dat aan een onderwijsontvanger wordt toegekend indien deze niet of niet verifieerbaar over een BSN beschikt. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "onderwijsnummer",
+                "dtype": "string"
+            },
+            "Indicatie GBA-relatie": {
+                "formaat_lengte": "Boolean (J/N)",
+                "verplicht": true,
+                "definitie_toelichting": "Indicatie die aangeeft of er voor de betreffende persoon een relatie met de BRP is.",
+                "alternatieve_naam": "indicatie_gba_relatie",
+                "dtype": "boolean"
+            },
+            "Indicatie WSF-verbruik  Boolean": {
+                "formaat_lengte": "(J/N)",
+                "verplicht": true,
+                "definitie_toelichting": "Indicatie die aangeeft of een student voor enige maand recht op studiefinanciering heeft of heeft gehad.",
+                "alternatieve_naam": "indicatie_wsf_verbruik_boolean",
+                "dtype": "(J/N)"
+            }
+        },
+        "nat": {
+            "Recordsoort": {
+                "formaat_lengte": "AN3..3",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van het record dat geleverd wordt. Waarde \u201cNAT\u201d.",
+                "alternatieve_naam": "recordsoort",
+                "dtype": "string"
+            },
+            "Burgerservicenummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het burgerservicenummer (BSN) is het nummer dat de natuurlijke persoon uniek identificeert in overheidsadministraties. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "burgerservicenummer",
+                "dtype": "string"
+            },
+            "Onderwijsnummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het uniek identificerende nummer dat aan een onderwijsontvanger wordt toegekend indien deze niet of niet verifieerbaar over een BSN beschikt. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "onderwijsnummer",
+                "dtype": "string"
+            },
+            "Begindatum": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": true,
+                "definitie_toelichting": "Eerste dag waarop de nationaliteit geldig is (jjjjmmdd). Aanvullende opmerking: Datum waarvan de dag of de dag en maand niet bekend hoeft te zijn. Deze bevat(ten) dan 00.",
+                "alternatieve_naam": "begindatum",
+                "dtype": "datum"
+            },
+            "Einddatum": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": false,
+                "definitie_toelichting": "De datum waarop de nationaliteit haar geldigheid verliest (jjjjmmdd). Aanvullende opmerking: Datum waarvan de dag of de dag en maand niet bekend hoeft te zijn. Deze bevat(ten) dan 00.",
+                "alternatieve_naam": "einddatum",
+                "dtype": "datum"
+            },
+            "Nationaliteitscode": {
+                "formaat_lengte": "AN4..4",
+                "verplicht": true,
+                "definitie_toelichting": "Een code voor de nationaliteit van een natuurlijke persoon. Toelichting: LANDELIJKE TABEL: NATIONALITEIT",
+                "alternatieve_naam": "nationaliteitscode",
+                "dtype": "string"
+            },
+            "Omschrijving nationaliteit": {
+                "formaat_lengte": "AN40",
+                "verplicht": true,
+                "definitie_toelichting": "De omschrijving van de nationaliteit van een natuurlijke persoon.",
+                "alternatieve_naam": "omschrijving_nationaliteit",
+                "dtype": "string"
+            }
+        },
+        "vbt": {
+            "Recordsoort": {
+                "formaat_lengte": "AN3..3",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van het record dat geleverd wordt. Waarde \u201cVBT\u201d.",
+                "alternatieve_naam": "recordsoort",
+                "dtype": "string"
+            },
+            "Burgerservicenummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het burgerservicenummer (BSN) is het nummer dat de natuurlijke persoon uniek identificeert in overheidsadministraties. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "burgerservicenummer",
+                "dtype": "string"
+            },
+            "Onderwijsnummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het uniek identificerende nummer dat aan een onderwijsontvanger wordt toegekend indien deze niet of niet verifieerbaar over een BSN beschikt. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "onderwijsnummer",
+                "dtype": "string"
+            },
+            "Begindatum": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": true,
+                "definitie_toelichting": "De datum (jjjjmmdd) waarop de verblijfstitel zijn geldigheid krijgt. Aanvullende opmerking: Datum waarvan de dag of de dag en maand niet bekend hoeft te zijn. Deze bevat(ten) dan 00.",
+                "alternatieve_naam": "begindatum",
+                "dtype": "datum"
+            },
+            "Einddatum": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": false,
+                "definitie_toelichting": "De datum (jjjjmmdd) waarop de verblijfstitel zijn geldigheid verliest. Aanvullende opmerking: Datum waarvan de dag of de dag en maand niet bekend hoeft te zijn. Deze bevat(ten) dan 00.",
+                "alternatieve_naam": "einddatum",
+                "dtype": "datum"
+            },
+            "Verblijfstitelcode": {
+                "formaat_lengte": "AN4..4",
+                "verplicht": true,
+                "definitie_toelichting": "Een code die aangeeft over welke verblijfsrechtelijke status de natuurlijke persoon beschikt Toelichting: LANDELIJKE TABEL: VERBLIJFSRECHT",
+                "alternatieve_naam": "verblijfstitelcode",
+                "dtype": "string"
+            },
+            "Omschrijving verblijfstitel": {
+                "formaat_lengte": "AN100",
+                "verplicht": true,
+                "definitie_toelichting": "Omschrijving van de verblijfsrechtelijke status die de natuurlijke persoon heeft",
+                "alternatieve_naam": "omschrijving_verblijfstitel",
+                "dtype": "string"
+            }
+        },
+        "vbv": {
+            "Recordsoort": {
+                "formaat_lengte": "AN3..3",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van het record dat geleverd wordt. Waarde \u201cVBV\u201d.",
+                "alternatieve_naam": "recordsoort",
+                "dtype": "string"
+            },
+            "Burgerservicenummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het burgerservicenummer (BSN) is het nummer dat de natuurlijke persoon uniek identificeert in overheidsadministraties. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "burgerservicenummer",
+                "dtype": "string"
+            },
+            "Onderwijsnummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het uniek identificerende nummer dat aan een onderwijsontvanger wordt toegekend indien deze niet of niet verifieerbaar over een BSN beschikt. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "onderwijsnummer",
+                "dtype": "string"
+            },
+            "Begindatum": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": true,
+                "definitie_toelichting": "De datum waarop het verblijfsdocument zijn geldigheid krijgt (jjjjmmdd).",
+                "alternatieve_naam": "begindatum",
+                "dtype": "datum"
+            },
+            "Einddatum": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": false,
+                "definitie_toelichting": "De datum waarop het verblijfsdocument zijn geldigheid verliest (jjjjmmdd).",
+                "alternatieve_naam": "einddatum",
+                "dtype": "datum"
+            },
+            "Type verblijfsvergunning": {
+                "formaat_lengte": "AN1",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van het type verblijfsdocument in de communicatie met HO-Instellingen en Studielink Mogelijke waarden: 1 = Verblijfsdocument type I die voldoet aan nationaliteitsvoorwaarde WSF2000 2 = Verblijfsdocument type II die voldoet aan nationaliteitsvoorwaarde WSF2000 3 = Verblijfsdocument type III die voldoet aan nationaliteitsvoorwaarde WSF2000 4 = Verblijfsdocument type IV die voldoet aan nationaliteitsvoorwaarde WSF2000 5 = Verblijfsdocument type EU/EER, die voldoet aan nationaliteitsvoorwaarde WSF2000 9 = Verblijfsvergunning voldoet niet aan nationaliteitsvoorwaarde WSF 2000",
+                "alternatieve_naam": "type_vvr",
+                "dtype": "string"
+            },
+            "Omschrijving verblijfsvergunning": {
+                "formaat_lengte": "AN150",
+                "verplicht": true,
+                "definitie_toelichting": "Omschrijving van het verblijfsdocument",
+                "alternatieve_naam": "omschrijving_vvr",
+                "dtype": "string"
+            },
+            "Voldoet aan beperking WSF2000": {
+                "formaat_lengte": "Boolean (J/N)",
+                "verplicht": true,
+                "definitie_toelichting": "Indicatie die aangeeft of het verblijfsdocument voldoet aan de beperkingen zoals bedoeld in artikel 3 lid 1 van het Besluit Studiefinanciering 2000 (BSF).",
+                "alternatieve_naam": "voldoet_aan_beperking_wsf2000",
+                "dtype": "boolean"
+            }
+        },
+        "isg": {
+            "Recordsoort": {
+                "formaat_lengte": "AN3..3",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van het record dat geleverd wordt. Waarde \u201cISG\u201d.",
+                "alternatieve_naam": "recordsoort",
+                "dtype": "string"
+            },
+            "Burgerservicenummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het burgerservicenummer (BSN) is het nummer dat de natuurlijke persoon uniek identificeert in overheidsadministraties. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "burgerservicenummer",
+                "dtype": "string"
+            },
+            "Onderwijsnummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het uniek identificerende nummer dat aan een onderwijsontvanger wordt toegekend indien deze niet of niet verifieerbaar over een BSN beschikt. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "onderwijsnummer",
+                "dtype": "string"
+            },
+            "Inschrijvingvolgnummer": {
+                "formaat_lengte": "AN20",
+                "verplicht": true,
+                "definitie_toelichting": "Een door de instelling aan de inschrijving toegekend volgnummer ten behoeve van de registratie van een inschrijving bij DUO. Het inschrijvingvolgnummer moet per BRIN uniek zijn. Toelichting: Het inschrijvingvolgnummer bestaat uit cijfers, hoofdletters (A-Z), kleine letters (a-z) of een combinatie daarvan.",
+                "alternatieve_naam": "volgnummer",
+                "dtype": "string"
+            },
+            "Inschrijvingsvorm": {
+                "formaat_lengte": "AN1",
+                "verplicht": true,
+                "definitie_toelichting": "Inschrijvingsvorm is een indicatie die aangeeft in welke vorm een student een opleiding wil volgen. Mogelijke waarden: E = Extraneus S = Student",
+                "alternatieve_naam": "inschrijvingsvorm",
+                "dtype": "string"
+            },
+            "Datum inschrijving": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": true,
+                "definitie_toelichting": "De datum vanaf wanneer de betrokkene is ingeschreven (jjjjmmdd)",
+                "alternatieve_naam": "datum_inschrijving",
+                "dtype": "datum"
+            },
+            "Datum uitschrijving": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": false,
+                "definitie_toelichting": "De datum waarop de betrokkene is uitgeschreven  Aanvullende opmerking: De laatste datum waarop de inschrijving daadwerkelijk actief was (jjjjmmdd).",
+                "alternatieve_naam": "datum_uitschrijving",
+                "dtype": "datum"
+            },
+            "Eerste inschrijving": {
+                "formaat_lengte": "Boolean (J/N)",
+                "verplicht": true,
+                "definitie_toelichting": "Eerste inschrijving geeft aan of het om de opleiding van eerste inschrijving van de student gaat, te weten: 1\u00b0 opleiding waarvoor een student het collegegeld, bedoeld in de artikelen 7.43, eerste lid, van de wet, is verschuldigd en waarvoor geen vermindering of vrijstelling van het betalen van collegegeld op grond van de wet is verkregen, tenzij er sprake is van een vermindering als bedoeld in artikel 7.48, derde en vierde lid, of, 2\u00b0 opleiding waarvoor een persoon die het collegegeld, bedoeld in artikelen 7.43, tweede lid of 7.44 van de wet is verschuldigd, zich als eerste heeft ingeschreven. Toelichting: Bij meerdere eerste inschrijvingen bepalen de toeleverende instellingen onderling welke inschrijving van een student een eerste inschrijving betreft. Bij studenten uit het schakelprogramma moet de eerste inschrijving altijd met waarde N aangeleverd worden.",
+                "alternatieve_naam": "eerste_inschrijving",
+                "dtype": "boolean"
+            },
+            "Datum eerste aanlevering": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": true,
+                "definitie_toelichting": "Datum waarop de inschrijving voor het eerst bij DUO is ontvangen (jjjjmmdd).",
+                "alternatieve_naam": "datum_eerste_aanlevering",
+                "dtype": "datum"
+            },
+            "Onderwijsvorm": {
+                "formaat_lengte": "AN2..2",
+                "verplicht": true,
+                "definitie_toelichting": "Uitputtende lijst ten behoeve van het Hoger Onderwijs voor de manier waarop de kennisoverdracht is ingericht wat betreft fysieke aanwezigheid op de onderwijslocatie en de duur daarvan. Mogelijke waarden: VT = Voltijd DT = Deeltijd DU = Duaal",
+                "alternatieve_naam": "onderwijsvorm",
+                "dtype": "string"
+            },
+            "Opleidingscode": {
+                "formaat_lengte": "AN5..5",
+                "verplicht": true,
+                "definitie_toelichting": "De code van de opleiding volgens de ISAT-codering. Als de code kleiner dan 10000 is wordt deze voorafgegaan door een voorloopnul.",
+                "alternatieve_naam": "opleidingscode",
+                "dtype": "string"
+            },
+            "Opleidingsfase": {
+                "formaat_lengte": "AN1",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van een deel van opleiding. Mogelijke waarden: A = Associate Degree B = Bachelor  D = Propedeuse bachelor I = Initiele opleiding  M = Master  P = Propedeuse  S = Schakelprogramma",
+                "alternatieve_naam": "opleidingsfase",
+                "dtype": "string"
+            }
+        },
+        "grd": {
+            "Recordsoort": {
+                "formaat_lengte": "AN3..3",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van het record dat geleverd wordt. Waarde \u201cGRD\u201d.",
+                "alternatieve_naam": "recordsoort",
+                "dtype": "string"
+            },
+            "Burgerservicenummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het burgerservicenummer (BSN) is het nummer dat de natuurlijke persoon uniek identificeert in overheidsadministraties. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "burgerservicenummer",
+                "dtype": "string"
+            },
+            "Onderwijsnummer": {
+                "formaat_lengte": "AN9..9",
+                "verplicht": false,
+                "definitie_toelichting": "Het uniek identificerende nummer dat aan een onderwijsontvanger wordt toegekend indien deze niet of niet verifieerbaar over een BSN beschikt. Indien nodig voorzien van voorloopnul.",
+                "alternatieve_naam": "onderwijsnummer",
+                "dtype": "string"
+            },
+            "Resultaatvolgnummer": {
+                "formaat_lengte": "AN20",
+                "verplicht": true,
+                "definitie_toelichting": "Een door de instelling aan het onderwijsresultaat toegekend volgnummer ten behoeve van de registratie van een onderwijsresultaat bij DUO. Het Resultaatvolgnummer moet per BRIN uniek zijn. Toelichting: Het resultaatvolgnummer bestaat uit cijfers, hoofdletters (A-Z), kleine letters (a-z) of een combinatie daarvan.",
+                "alternatieve_naam": "volgnummer",
+                "dtype": "string"
+            },
+            "Eerste graad": {
+                "formaat_lengte": "Boolean (J/N)",
+                "verplicht": true,
+                "definitie_toelichting": "T  AEerste graad geeft aan of het onderwijsresultaat voor bekostiging in aanmerking moet worden genomen. Toelichting: Bij meerdere eerste graden bepalen de toeleverende instellingen onderling welke graad van een student een eerste graad betreft. Aanvullende opmerking: Voor een propedeutische graad is dit gegeven altijd gevuld met \u201cN\u201d.",
+                "alternatieve_naam": "eerste_graad",
+                "dtype": "boolean"
+            },
+            "Datum diploma": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": true,
+                "definitie_toelichting": "De datum waarop het diploma behaald is (jjjjmmdd).",
+                "alternatieve_naam": "datum_diploma",
+                "dtype": "datum"
+            },
+            "Datum eerste aanlevering": {
+                "formaat_lengte": "AN8..8 (jjjjmmdd)",
+                "verplicht": true,
+                "definitie_toelichting": "Datum waarop de graad voor het eerst bij DUO is ontvangen (jjjjmmdd).",
+                "alternatieve_naam": "datum_eerste_aanlevering",
+                "dtype": "datum"
+            },
+            "Onderwijsvorm": {
+                "formaat_lengte": "AN2..2",
+                "verplicht": true,
+                "definitie_toelichting": "Uitputtende lijst ten behoeve van het Hoger Onderwijs voor de manier waarop de kennisoverdracht is ingericht wat betreft fysieke aanwezigheid op de onderwijslocatie en de duur daarvan. Mogelijke waarden: VT = Voltijd DT = Deeltijd DU = Duaal",
+                "alternatieve_naam": "onderwijsvorm",
+                "dtype": "string"
+            },
+            "Opleidingscode": {
+                "formaat_lengte": "AN5..5",
+                "verplicht": true,
+                "definitie_toelichting": "De code van de opleiding volgens de ISAT-codering. Als de code kleiner dan 10000 is wordt deze voorafgegaan door een voorloopnul.",
+                "alternatieve_naam": "opleidingscode",
+                "dtype": "string"
+            },
+            "Opleidingsfase": {
+                "formaat_lengte": "AN1",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van een deel van opleiding. Mogelijke waarden: A = Associate Degree B = Bachelor  D = Propedeuse bachelor I = Initiele opleiding  M = Master  P = Propedeuse  T = Tussentijds doctoraal examen",
+                "alternatieve_naam": "opleidingsfase",
+                "dtype": "string"
+            }
+        },
+        "ctr": {
+            "Recordsoort": {
+                "formaat_lengte": "AN3..3",
+                "verplicht": true,
+                "definitie_toelichting": "Aanduiding van het record dat geleverd wordt. Waarde \u201cCTR\u201d.",
+                "alternatieve_naam": "recordsoort",
+                "dtype": "string"
+            },
+            "Totaal opleidingscode": {
+                "formaat_lengte": "N12",
+                "verplicht": true,
+                "definitie_toelichting": "Totaal van alle opleidingscodes van alle inschrijvingen en graden die in het Overzicht Basis- en diplomagegevens Onderzoek zijn opgenomen. it is dus het totaal van alle opleidingscodes uit alle ISG- en GRD-records.",
+                "alternatieve_naam": "totaal_croho",
+                "dtype": "int"
+            },
+            "Totaal aantal inschrijvingen": {
+                "formaat_lengte": "N12",
+                "verplicht": true,
+                "definitie_toelichting": "Totaal aantal inschrijvingen (deelnames) dat in het Overzicht Basis- en diplomagegevens Onderzoek is opgenomen. it is dus het aantal ISG-records.",
+                "alternatieve_naam": "totaal_aantal_inschrijvingen",
+                "dtype": "int"
+            },
+            "Totaal aantal graden": {
+                "formaat_lengte": "N12",
+                "verplicht": true,
+                "definitie_toelichting": "Totaal aantal graden (resultaten) dat in het Overzicht Basis- en diplomagegevens Onderzoek is opgenomen. it is dus het aantal GRD-records.",
+                "alternatieve_naam": "totaal_aantal_graden",
+                "dtype": "int"
+            },
+            "Totaal generaal": {
+                "formaat_lengte": "N12",
+                "verplicht": true,
+                "definitie_toelichting": "De waarden van het de controletotalen totaal opleidingscode, totaal aantal inschrijvingen en totaal aantal graden opgeteld.",
+                "alternatieve_naam": "totaal_generaal",
+                "dtype": "int"
+            }
+        }
+    }
+}

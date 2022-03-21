@@ -2,91 +2,91 @@ import re
 import pandas as pd
 
 
-normalize_names = lambda x: re.sub('\W', '_', x.lower())
+def process_tables(dfs, patterns):
+    """Verwerk de camelot output.
 
+    Camelot weet niet wanneer een tabel meer dan één pagina in beslag neemt.
+    In die gevallen levert elke pagina een nieuwe eigen tabel op in de output
+    van Camelot. Daarnaast herkent Camelot niet uitzichzelf de kolomnamen van
+    een tabel. Deze functie zorgt ervoor dat tabellen die meerdere pagina's
+    bestrijken worden samengevoegd en dat elke tabel de juiste kolomnamen
+    krijgt.
 
-def make_table(df):
-    return df.rename(columns=df.iloc[0]).rename(columns=normalize_names).drop(0)
+    Daarnaast wordt sommige informatie in de bestandsbeschrijvingen bewerkt, of
+    er wordt nieuwe informatie toegevoegd. Het belangrijkste mechanisme
+    hiervoor is een serie regex substituties die via `patterns` klaargezet en
+    uitgevoerd kan worden. Zie functie `process_table` voor meer informatie.
 
-
-def concat_cells(df):
-    concat_rows = lambda s: s.str.cat(sep=' ')
-    return df.replace({'': None}
-    ).assign(omschrijving = lambda df: df.omschrijving.ffill()
-    ).groupby('omschrijving', sort=False
-    ).agg(lambda grp: grp.apply(concat_rows, axis=0)
-    )
-
-def process_list_of_tables(tables, skip=None):
-    if skip:
-        tables = [j for i,j in enumerate(tables) if i not in skip]
-    
-    new_list = list()
-    n_tables = len(tables)
-    counter = -1
-    previous_df = pd.DataFrame()
-
-    for i, table in enumerate(tables):
-        df = make_table(tables[i].df)
-        if i > 0 and i < n_tables and df.iloc[0,0] != 'Recordsoort':
-            df = previous_df.append(df)
-            new_list[counter] = df
+    Gebruik deze functie om de volgende acties uit te voeren voor elke tabel in
+    `dfs`:
+    - Voeg gesplitste tabellen samen
+    - Voeg gesplitste rijen samen
+    - Voeg nieuwe kolommen toe
+    - Schoon bestaande data op
+    """
+    output = []
+    for df in dfs:
+        cols = df.iloc[0].map(normalize_names)
+        df = df.rename(columns=cols).drop(0)
+        if df.iloc[0,0] == 'Recordsoort':
+            output.append(df)
         else:
-            counter += 1
-            new_list.append(df)
-        previous_df = df
-    
-    new_list = [concat_cells(df) for df in new_list]
-    return new_list
+            output[-1] = pd.concat([output[-1], df])
+    return [process_table(df, patterns) for df in output]
 
-def extend_table(df):
-    def make_names(df):
-        andere_namen = dict(
-            burgerservicenummer = 'bsn',
-            onderwijsnummer = 'own',
-            opleidingscode = 'croho',
-            voldoet_aan_beperking_wsf2000 = 'voldoet_aan_wsf',
-        )
-        replacements = {
-            'omschrijving': 'oms',
-            'verblijfsvergunning': 'vvr',
-            '.*volgnummer': 'volgnummer',
-        }
-        s = pd.Series(df.index.map(normalize_names)).replace(andere_namen)
-        for pat, repl in replacements.items():
-            s = s.str.replace(pat, repl)
-        return s.values
 
-    def add_dtypes(df):
-        dtypes = {
-            'A': 'string',
-            'N': 'int',
-            'B': 'boolean',
-        }
-        s = df.formaat___lengte.str[0].apply(lambda s: dtypes.get(s))
-        s.loc[df.index.str.contains('datum', case=False)] = 'datum'
-        return s
+def process_table(df, patterns):
+    """Verwerk tabel:
+    - Voeg gesplitste rijen samen
+    - Voeg nieuwe kolommen toe
+    - Schoon bestaande data op
 
-    def fix_definitie_toelichting(df):
-        def fix_strings(x):
-            replacements = {
-                " ogelijke":   " Mogelijke",
-                " anvullende": " Aanvullende",
-                " oelichting": " Toelichting",
-                " aarde":      " Waarde",
-                "^[A-Z]{2}":   lambda i: i.group(0)[1:],
-            }
-            for pat, repl in replacements.items():
-                x = re.sub(pat, repl, x)
-            return x
-        return df.definitie_toelichting.apply(fix_strings)
-    
+    Na samenvoegen van een geknipte tabel kunnen rijen op de randen van de
+    pagina in tweëen zijn geknipt. Deze functie zorgt er allereerst voor dat de rij weer hersteld wordt door de in tweëen geknipte rijen samen te voegen.
+
+    Vervolgens worden verschillende in `patterns` gedefinieerde substituties
+    uitgevoerd op de tabellen. Hierbij kunnen bestaande kolommen worden
+    bijgewerkt of nieuwe kolommen worden toegevoegd.
+
+    Tot slot worden de waarden in de nieuwe aangemaakte kolom
+    'alternatieve_naam' genormaliseerd (kleine letters en spaties vervangen met
+    underscore) en de waarden in de kolom 'verplicht' geconverteerd naar bools.
+    """
+    df = concat_splits(df)
+    for key, spec in patterns.items():
+        target = spec['target']
+        pats = spec['patterns']
+        df[target] = replace_pats(df[key], pats)
     return df.assign(
-        alternatieve_naam=make_names,
-        dtype=add_dtypes,
-        definitie_toelichting=fix_definitie_toelichting,
+        alternatieve_naam = df.alternatieve_naam.map(normalize_names),
+        verplicht = boolify(df.verplicht),
     )
+
+
+def concat_splits(df):
+    "Voeg gesplitste rijen samen."
+    concat_rows = lambda s: s.str.cat(sep=' ')
+    veld0 = df.columns[0]
+    return (
+        df
+        .replace({'': pd.NA})
+        .assign(**{veld0: lambda df: df[veld0].ffill()})
+        .groupby(veld0, sort=False)
+        .agg(lambda grp: grp.apply(concat_rows, axis=0))
+        .reset_index()
+    )
+
+
+normalize_names = lambda x: re.sub('\W+', '_', x.lower())
 
 
 def boolify(s, true='ja', false='nee', astype=bool):
+    "Converteer Series `s` naar een boolean dtype."
     return s.replace({true: True, false: False}).astype(astype)
+
+
+def replace_pats(s, patterns):
+    "Vervang in Series `s` de keys met de values in `patterns`."
+    for pat, repl in patterns.items():
+        s = s.str.replace(pat, repl, regex=True)
+    return s

@@ -10,7 +10,7 @@ LIBPATH = Path(__file__).parent.absolute()
 
 
 class DuoBestand:
-    filename_tabledefs = ''
+    filename_tabledefs = None
 
     def __init__(self, data, tabledefs, use_altnaam=True):
         self.recordsoorten = tabledefs['recordsoorten']
@@ -111,6 +111,10 @@ class Data:
         self.data = self.data_to_frame(data)
 
     def __getattr__(self, name):
+        """Indien `name` voorkomt als sleutel in veldinfo, geef dan voor elk
+        veld die informatie terug. Indien `name` niet voorkomt als sleutel,
+        probeer deze data dan op te halen bij `data`.
+        """
         if name.startswith('_'):
             raise AttributeError(name)
         if name in self.veldeigenschappen:
@@ -126,6 +130,11 @@ class Data:
         return f"<h3>[{self.key.upper()}] {self.name}</h3>{html}"
 
     def read_veldinfo(self, veldinfo, use_altnaam):
+        """Integreer veldinfo in het configuratiebestand in de data.
+        - Sla originele veldnamen op onder 'originele_naam'.
+        - Vertaal dtypes in configuratiebestand naar pandas dtypes.
+        - Indien `use_altnaam`: vervang sleutels met alternatieve naam.
+        """
         map_dtypes = lambda x: self.MAP_DTYPES.get(x, x)
         for key, info in veldinfo.items():
             info['originele_naam'] = key
@@ -136,14 +145,16 @@ class Data:
 
     @property
     def veldnamen(self):
+        "Lijst met alle veldnamen."
         return list(self.veldinfo.keys())
 
     @property
     def veldeigenschappen(self):
+        "Lijst met alle veldeigenschappen."
         return {item for items in self.veldinfo.values() for item in items}
 
     def data_to_frame(self, data):
-        "Convert records to dataframe."
+        "Converteer records naar dataframe."
         df = pd.DataFrame(
             data=data,
             columns=self.veldnamen,
