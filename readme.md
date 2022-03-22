@@ -37,4 +37,25 @@ De data wordt opgeslagen als een `Data` object. De `DataFrame` is raadpleegbaar 
 Resultaten kunnen verder bewerkt worden in python maar evt. ook geëxporteerd worden naar excel: `obo.to_excel('pad/naar/obo.xlsx)`. Elk recordsoort wordt dan weggeschreven naar een eigen sheet.
 
 ## PvE Parser
-De definities op basis waarvan de records geparsed worden, liggen vast in de diverse .json files. Deze kunnen (semi-)geautomatiseerd uit het pve van DUO gedestilleerd worden. Zie hiervoor de `pve_parser` (eveneens onderdeel van deze repo).
+De definities op basis waarvan de records geparsed worden, liggen vast in de diverse .json files. Deze kunnen (semi-)geautomatiseerd uit het pve van DUO gedestilleerd worden. Zie hiervoor de [pve_parser](pve_parser/pve_parser.ipynb) (eveneens onderdeel van deze repo).
+
+- **meta** : informatie over het pve dat gebruikt is
+    - versie
+    - url
+    - datum
+- **eigenschappen** : informatie over bestandsbeschrijving
+    - naam
+    - paginas
+    - encoding
+    - separator
+    - datum_formaat
+- **recordsoorten** : sleutel en naam van de recordsoorten in het bestand
+- **velden** : per tabel de veldinformatie
+    - zoals deze is vastgelegd in het pve:
+        - omschrijving (sleutel)
+        - formaat_lengte
+        - verplicht
+        - definitie_toelichting
+    - toegevoegde velden:
+        - alternatieve naam (handzame korte naam)
+        - dtype (data type)
