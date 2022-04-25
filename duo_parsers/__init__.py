@@ -170,6 +170,49 @@ class Data:
         return df
 
 
+class Verschil:
+    @property
+    def oud(self):
+        return (
+            self.data
+            .filter(like='_oud')
+            .rename(columns=lambda i: i[:-len('_oud')])
+        )
+
+    @property
+    def nieuw(self):
+        return (
+            self.data
+            .filter(like='_nieuw')
+            .rename(columns=lambda i: i[:-len('_nieuw')])
+        )
+
+    @property
+    def zonder(self):
+        regex = '.*(?<!_oud)(?<!_nieuw)$'
+        return self.data.filter(regex=regex)
+
+    def verschil(self):
+        return (
+            self.oud.eq(self.nieuw)
+            .agg(lambda s: s[~s].index.to_list(), axis=1)
+        )
+
+    def vmatrix(self):
+        return (
+            self.oud.eq(self.nieuw).fillna(False)
+            .loc[:, lambda df: ~df.all(axis=0)]
+            # .applymap(lambda i: i == False)
+            .applymap(lambda i: not(i))
+            .rename(columns=lambda i: f"v{i}")
+            .assign(nverschil = lambda df: df.sum(axis=1).astype(int))
+        )
+
+
+class DataObov(Data, Verschil):
+    pass
+
+
 class Obo(DuoBestand):
     filename_tabledefs = 'tabledefs.obo.json'
 
@@ -179,12 +222,22 @@ class Obov(DuoBestand):
 
     @classmethod
     def from_csv(cls, path):
+        tabledefs = cls.load_tabledefs(LIBPATH / cls.filename_tabledefs)
+        encoding = tabledefs['eigenschappen']['encoding']
+        sep = tabledefs['eigenschappen']['separator']
+
         path = Path(path)
         records = {}
         for file in path.glob('OBOV_*.csv'):
-            records.update(cls.read_csv(file))
+            data = cls.read_csv(file, encoding=encoding, sep=sep)
+            records.update(data)
         tabledefs = cls.load_tabledefs(LIBPATH / cls.filename_tabledefs)
         return cls(records, tabledefs)
+
+    def get_record(self, key, data):
+        naam = self.recordsoorten[key]
+        veldinfo = self.tabledefs['velden'][key]
+        return DataObov(key, naam, data, veldinfo, self.use_altnaam)
 
 
 class Dab(DuoBestand):
