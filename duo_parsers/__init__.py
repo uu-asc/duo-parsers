@@ -4,6 +4,7 @@ import pickle
 from pathlib import Path
 
 import pandas as pd
+pd.set_option('future.no_silent_downcasting', True)
 
 
 LIBPATH = Path(__file__).parent.absolute()
